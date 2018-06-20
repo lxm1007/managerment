@@ -23,7 +23,6 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.cyy.services.StuService;
 
-import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 
 /**
  * Servlet implementation class UploadPicServlet
@@ -75,13 +74,17 @@ public class UploadPicServlet extends HttpServlet {
 		}
 		//处理获取到的上传文件的文件名的路径部分，只保留文件名部分
 		filename = filename.substring(filename.lastIndexOf("\\") + 1);
+		//tomcat下的目录
+		//String path_name = "E:\\apache-tomcat-8.0.51\\webapps\\managerment\\static\\img\\"+filename;
+		//eclipse下的目录
+		String path_name = "G:\\project\\managerment\\WebContent\\static\\img\\"+filename;
 		//获取item中的上传文件的输入流
 		InputStream in = list.get(0).getInputStream();
 		//创建缓冲区
 		byte buffer[] = new byte[1024];
 		//创建输出流对象，用于将缓冲区的数据读出到保存路径
 		System.out.println("save_path=="+savePath+ "\\" + filename);
-		FileOutputStream output = new FileOutputStream("D:\\project\\managerment\\WebContent\\static\\img\\"+ filename);
+		FileOutputStream output = new FileOutputStream(path_name);
 		//判断输入流中的数据是否已经读完
 		int len = 0;
 		//循环将输入流读入到缓冲区当中，(len=in.read(buffer))>0就表示输入流中还有数据
@@ -90,12 +93,13 @@ public class UploadPicServlet extends HttpServlet {
 		output.write(buffer, 0, len);
 		}
 		
-		
+		output.flush();
+		output.close();
 		response.setContentType("image/png");
 
 		String path = savePath+ "\\" + filename;
 		Map<String,Object> map = new HashMap<>();
-		map.put("imgPath", "D:\\project\\managerment\\WebContent\\static\\img\\"+filename);
+		map.put("imgPath", path_name);
 		map.put("id", id);
 		StuService stuService = new StuService(map);
 		try {
@@ -104,7 +108,7 @@ public class UploadPicServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		BufferedImage bi = ImageIO.read(new File("D:\\project\\managerment\\WebContent\\static\\img\\"+filename));
+		BufferedImage bi = ImageIO.read(new File(path_name));
 
 		ImageIO.write(bi, "png", response.getOutputStream());
 		request.setAttribute("picPath", path);

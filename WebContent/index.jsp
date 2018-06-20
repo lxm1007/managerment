@@ -106,7 +106,7 @@
 			<div class="login-html col-md-8 col-xs-10 col-md-offset-2 col-xs-offset-1" style="height: 500px;">
 				<span id="showmsg" style="font-size: 18px"></span>
 				<br><br><br>
-				<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">&nbsp;&nbsp;登录</label>
+				<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab"></label>
 				<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
 				<div class="login-form">
 					<div class="sign-in-htm">
@@ -172,7 +172,7 @@
 			</div>
 	</div>
 </div>
-	<div class="col-xs-12" style="text-align: center;margin-top:5px;"><br>版权所有 青岛农业大学<sup>&copy;</sup></div>
+	<div class="col-xs-12" style="text-align: center;margin-top:-5px;"><br>版权所有 青岛农业大学<sup>&copy;</sup></div>
 	
 	</body>
 	

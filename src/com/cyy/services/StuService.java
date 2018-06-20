@@ -111,8 +111,9 @@ public class StuService extends JdbcServicesSupport{
  	}
 
 	public List<Map<String, String>> searchStuByStudyAndName() throws Exception {
-	String sql = "select a.stu_name,b.* from  stu_info  a  left join stu_honor b on a.stu_study_id = b.stu_study_id where a.stu_study_id =? and a.stu_name like ? ";
-	//Object[] param = {dto.get("study_id"),"%"+dto.get("stu_name").toString()+"%"};
+	System.out.println(dto);
+	String sql = "select a.stu_name,b.* from  stu_info  a  left join stu_honor b on a.stu_study_id = b.stu_study_id and a.stu_study_id =? and a.stu_name like ? ";
+	//Object[] param = {dto.get("stu_study_id"),"%"+dto.get("stu_name").toString()+"%"};
 	String study_id= dto.get("study_id")==null?"":dto.get("study_id").toString();
 	String stu_name = dto.get("stu_name")==null?"":dto.get("stu_name").toString();
 	if(study_id.equals("")&&!stu_name.equals("")) {
@@ -128,7 +129,7 @@ public class StuService extends JdbcServicesSupport{
 		Object[] param = {study_id,"%"+stu_name+"%"};
 		return this.queryForList(sql, param);
 	}else {
-		sql = "select a.stu_name,b.* from  stu_info  a  right join stu_honor b on a.stu_study_id = b.stu_study_id";
+		sql = "select a.stu_name,b.* from  stu_info  a  left join stu_honor b on a.stu_study_id = b.stu_study_id";
 		return this.queryForList(sql);
 	}
 	
@@ -154,19 +155,19 @@ public class StuService extends JdbcServicesSupport{
 	}
 
 	public List<Map<String, String>> searchPunishjByStudyAndName() throws Exception {
-		String study_id= dto.get("study_id")==null?"":dto.get("study_id").toString();
+		String stu_study_id= dto.get("study_id")==null?"":dto.get("study_id").toString();
 		String stu_name = dto.get("stu_name")==null?"":dto.get("stu_name").toString();
-		if(study_id.equals("")&&!stu_name.equals("")) {
+		if(stu_study_id.equals("")&&!stu_name.equals("")) {
 			String sql = "select b.stu_name,a.* from  stu_punish  a  left join stu_info b on a.stu_study_id = b.stu_study_id where  b.stu_name like ? ";
 			Object[] param = {"%"+stu_name+"%"};
 			return this.queryForList(sql, param);
-		}else if(!study_id.equals("")&&stu_name.equals("")) {
+		}else if(!stu_study_id.equals("")&&stu_name.equals("")) {
 			String sql = "select b.stu_name,a.* from  stu_punish  a  left join stu_info b on a.stu_study_id = b.stu_study_id where  b.stu_study_id = ? ";
-			Object[] param = {study_id};
+			Object[] param = {stu_study_id};
 			return this.queryForList(sql, param);
-		}else if(!study_id.equals("")&&!stu_name.equals("")) {
+		}else if(!stu_study_id.equals("")&&!stu_name.equals("")) {
 			String sql = "select b.stu_name,a.* from  stu_punish  a  left join stu_info b on a.stu_study_id = b.stu_study_id  where  b.stu_study_id = ? and b.stu_name like ?";
-			Object[] param = {study_id,"%"+stu_name+"%"};
+			Object[] param = {stu_study_id,"%"+stu_name+"%"};
 			return this.queryForList(sql, param);
 		}else {
 			String sql = "select b.stu_name,a.* from  stu_punish  a  left join stu_info b on a.stu_study_id = b.stu_study_id ";

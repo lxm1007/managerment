@@ -43,7 +43,7 @@ width: 100px;
 <td>学号</td>
 <td>获奖时间</td>
 <td>获奖缘由</td>
-<td>获奖证书</td>
+<td>证书名称</td>
 <td>操作</td>
 </tr>
 <c:forEach var="list" items="${info}" varStatus="status">

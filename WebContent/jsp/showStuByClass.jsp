@@ -25,7 +25,7 @@ width: 100px;
 <form class="form-inline" action="${path}/serachByClass">
   <div class="form-group">
     <label class="sr-only" for="exampleInputEmail3">班级</label>
-    <input type="text" class="form-control" name="major" placeholder="班级">
+    <input type="text" class="form-control" name="class" placeholder="班级">
   </div>
 
   <button type="submit" class="btn btn-success">查找</button>

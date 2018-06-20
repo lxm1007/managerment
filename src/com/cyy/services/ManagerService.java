@@ -26,6 +26,7 @@ public class ManagerService extends JdbcServicesSupport{
 		
 		String sql = "select * from MANAGER_INFO where MANAGER_LOGIN_NAME=? and MANAGER_PWD=?";
 		//md5º”√‹√‹¬Î
+		
 		Object[] obj = {dto.get("user"),Tools.getMD5String(dto.get("pass").toString())};
 		Map<String,String> map =new HashMap<>();
 		try {

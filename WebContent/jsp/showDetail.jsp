@@ -16,7 +16,7 @@
 <span style="color: red">图片为155*135,请裁剪后上传</span>
 <form id="form" enctype="multipart/form-data" action="${path }/uploadPic" method="post" target="pic">
 <div class="col-md-1" ><iframe id="frame" style="width: 160px;height: 140px" name="pic">
-</iframe><input  type="file" name="file"><input type="hidden" name="id" value="${info.stu_id }"><button class="btn btn-primary btn-sm">上传</button></div>
+</iframe><input  type="file" name="file"><input type="hidden" name="id" value="${info.stu_id }"><button class="btn btn-primary">上传</button></div>
 </form>
 <form class="form-inline" method="post" action="${path }/updateFirstInfo">
 <div class="col-md-10 col-md-offset-1" style="padding-top: 0px;float: left">
@@ -59,9 +59,9 @@
     <label for="exampleInputEmail2">班&nbsp;&nbsp;&nbsp;&nbsp;级</label>
     <input type="text" class="form-control"  name="stu_class" value="${info.stu_class }" placeholder="必填" required="required">
   </div>
-    <div class="col-md-12"><br><br><br></div>
+    <div class="col-md-12"><br></div>
     </div>
-    <div class="col-md-11 col-md-offset-1" >
+    <div class="col-md-10 col-md-offset-2" >
          <div class="form-group">
     <label for="exampleInputEmail2">电&nbsp;&nbsp;&nbsp;&nbsp;话</label>
     <input type="text" name="stu_tel" class="form-control" value="${info.stu_tel }" placeholder="必填" required="required">
@@ -80,7 +80,7 @@
    
     <div class="form-group">
     <label for="exampleInputEmail2">出生日期</label>
-    <input type="text" class="form-control" name="stu_birth" value="${info.stu_birth }" placeholder="必填" required="required">
+    <input type="date" class="form-control" name="stu_birth" value="${info.stu_birth }" placeholder="必填" required="required">
   </div>
     <div class="form-group">
     <label for="exampleInputEmail2">层&nbsp;&nbsp;&nbsp;&nbsp;次</label>

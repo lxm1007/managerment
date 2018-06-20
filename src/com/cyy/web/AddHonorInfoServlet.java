@@ -29,7 +29,6 @@ public class AddHonorInfoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.getRequestDispatcher("/searchStuByStudyAndName").forward(request, response);
-		
 		}
 	
 	
